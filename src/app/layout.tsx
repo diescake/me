@@ -34,7 +34,7 @@ export default function RootLayout({
                 height={32}
                 className="rounded-full"
               />
-              diescake
+              diescake.com
             </Link>
             <div className="space-x-6">
               <Link
