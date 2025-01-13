@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import type { FunctionComponent } from 'react'
 
 export default function Home(): ReturnType<FunctionComponent> {
@@ -12,31 +11,6 @@ export default function Home(): ReturnType<FunctionComponent> {
             great user experiences. Currently working on various projects using
             React, Next.js, and TypeScript.
           </p>
-        </section>
-
-        <section className="flex justify-center space-x-4">
-          <Link
-            href="https://x.com/diescake"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            X.com
-          </Link>
-          <Link
-            href="https://github.com/diescake"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            GitHub
-          </Link>
-          <Link
-            href="/blog"
-            className="text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            Blog
-          </Link>
         </section>
       </div>
     </main>

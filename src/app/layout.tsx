@@ -20,13 +20,37 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header className="bg-white shadow-sm">
-          <nav className="max-w-4xl mx-auto px-4 py-4">
+          <nav className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
             <Link
               href="/"
               className="text-xl font-bold text-gray-900 hover:text-blue-600"
             >
-              Cline Playground
+              diescake
             </Link>
+            <div className="space-x-6">
+              <Link
+                href="https://x.com/diescake"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                X.com
+              </Link>
+              <Link
+                href="https://github.com/diescake"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                GitHub
+              </Link>
+              <Link
+                href="/blog"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Blog
+              </Link>
+            </div>
           </nav>
         </header>
         <main>{children}</main>
