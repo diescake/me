@@ -24,7 +24,7 @@ export default function Home(): ReturnType<FunctionComponent> {
               great user experiences. Currently working on various projects
               using React, Next.js, and TypeScript.
             </p>
-            <p className="text-sm text-gray-400 mt-8 italic border-t border-zinc-800 pt-4 text-center">
+            <p className="text-sm text-gray-400 mt-8 italic border-t border-zinc-800 pt-4 mb-4">
               これは{' '}
               <a
                 href="https://github.com/cline/cline"
@@ -37,6 +37,15 @@ export default function Home(): ReturnType<FunctionComponent> {
               </a>
               で生成したポートフォリオ風のサイトです。Blogもすべて生成された記事です。
             </p>
+            <a
+              href="https://github.com/diescake/me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-gray-300 inline-flex items-center"
+            >
+              GitHub Repository
+              <ExternalLinkIcon className="ml-0.5 w-3 h-3" />
+            </a>
           </div>
         </section>
       </div>
