@@ -22,7 +22,7 @@ export default function RootLayout({
         <header className="bg-white shadow-sm">
           <nav className="max-w-4xl mx-auto px-4 py-4">
             <Link
-              href="/blog"
+              href="/"
               className="text-xl font-bold text-gray-900 hover:text-blue-600"
             >
               Cline Playground
