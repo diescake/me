@@ -21,18 +21,20 @@ export async function GET(request: Request): Promise<Response> {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#fff',
-            padding: '40px',
+            background: 'linear-gradient(to bottom right, #ffffff, #e5e5e5)',
+            padding: '48px 60px',
           }}
         >
           <div
             style={{
               display: 'flex',
-              fontSize: 60,
+              maxWidth: '800px',
+              fontSize: 52,
               fontWeight: 'bold',
               textAlign: 'center',
-              color: '#000',
+              color: '#111',
               lineHeight: 1.4,
+              letterSpacing: '-0.02em',
             }}
           >
             {title}
@@ -40,12 +42,24 @@ export async function GET(request: Request): Promise<Response> {
           <div
             style={{
               display: 'flex',
-              fontSize: 40,
-              color: '#666',
-              marginTop: 'auto',
+              alignItems: 'center',
+              gap: '12px',
+              marginTop: '60px',
+              padding: '12px 24px',
+              background: '#111',
+              borderRadius: '12px',
             }}
           >
-            diescake.com
+            <div
+              style={{
+                fontSize: 36,
+                fontWeight: '500',
+                color: '#fff',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              diescake.com
+            </div>
           </div>
         </div>
       ),
