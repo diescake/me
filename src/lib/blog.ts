@@ -2,8 +2,10 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
-import html from 'remark-html'
 import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeStringify from 'rehype-stringify'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -29,13 +31,15 @@ export async function getPostData(id: string): Promise<BlogPost> {
   // Parse front matter
   const { data, content } = matter(fileContents)
 
-  // Convert markdown to HTML
+  // Convert markdown to HTML with syntax highlighting
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(html)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
     .process(content)
 
-  const htmlContent = processedContent.toString()
+  const htmlContent = String(processedContent)
 
   return {
     id,
