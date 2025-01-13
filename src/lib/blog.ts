@@ -3,8 +3,10 @@ import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
+import { remarkCallout } from './remark-callout'
 import remarkRehype from 'remark-rehype'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
@@ -34,7 +36,9 @@ export async function getPostData(id: string): Promise<BlogPost> {
   // Convert markdown to HTML with syntax highlighting
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkRehype)
+    .use(remarkCallout)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(content)
