@@ -43,7 +43,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header className="bg-white shadow-sm">
-          <nav className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+          <nav className="max-w-4xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
             <Link
               href="/"
               className="text-xl font-bold text-gray-900 hover:text-blue-600 flex items-center gap-2"
@@ -57,31 +57,33 @@ export default function RootLayout({
               />
               diescake.com
             </Link>
-            <div className="space-x-6">
-              <Link
-                href="https://x.com/diescake"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
-              >
-                X.com
-                <ExternalLinkIcon />
-              </Link>
-              <Link
-                href="https://github.com/diescake"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
-              >
-                GitHub
-                <ExternalLinkIcon />
-              </Link>
-              <Link
-                href="/blog"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
-              >
-                Blog
-              </Link>
+            <div className="flex flex-col items-end gap-4 sm:flex-row sm:items-center sm:gap-6">
+              <div className="flex gap-6">
+                <Link
+                  href="https://x.com/diescake"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
+                >
+                  X.com
+                  <ExternalLinkIcon />
+                </Link>
+                <Link
+                  href="https://github.com/diescake"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
+                >
+                  GitHub
+                  <ExternalLinkIcon />
+                </Link>
+                <Link
+                  href="/blog"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  Blog
+                </Link>
+              </div>
             </div>
           </nav>
         </header>
