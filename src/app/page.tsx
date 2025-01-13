@@ -23,7 +23,7 @@ export default function Home(): ReturnType<FunctionComponent> {
               Cline
               <ExternalLinkIcon className="ml-0.5 w-3 h-3" />
             </a>
-            で生成したポートフォリオ風のサイトです。
+            で生成したポートフォリオ風のサイトです。Blogもすべて生成された記事です。
           </p>
         </section>
       </div>
