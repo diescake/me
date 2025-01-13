@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { FunctionComponent } from 'react'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import './globals.css'
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}): ReturnType<FunctionComponent> {
   return (
     <html lang="en">
       <body className={inter.className}>
