@@ -4,7 +4,7 @@ import { ExternalLinkIcon } from '@/components/ExternalLinkIcon'
 
 export default function Home(): ReturnType<FunctionComponent> {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 bg-zinc-900">
+    <main className="h-[calc(100vh-73px)] flex flex-col items-center justify-center p-6 bg-zinc-900">
       <div className="max-w-2xl w-full space-y-8">
         <section className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-48 h-48 relative rounded-full overflow-hidden border-4 border-gray-100 shadow-lg">
