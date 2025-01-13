@@ -59,9 +59,14 @@ export function getAllPostIds(): string[] {
   return fileNames.map((fileName) => fileName.replace(/\.md$/, ''))
 }
 
-export function getAllPosts(): BlogPostMetadata[] {
+export function getPaginatedPosts(
+  page: number = 1,
+  perPage: number = 5
+): {
+  posts: BlogPostMetadata[]
+  totalPages: number
+} {
   const fileNames = fs.readdirSync(postsDirectory)
-
   const allPostsData = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '')
     const fullPath = path.join(postsDirectory, fileName)
@@ -77,11 +82,25 @@ export function getAllPosts(): BlogPostMetadata[] {
   })
 
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
+  const sortedPosts = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
       return -1
     }
   })
+
+  const totalPosts = sortedPosts.length
+  const totalPages = Math.ceil(totalPosts / perPage)
+  const start = (page - 1) * perPage
+  const end = start + perPage
+
+  return {
+    posts: sortedPosts.slice(start, end),
+    totalPages,
+  }
+}
+
+export function getAllPosts(): BlogPostMetadata[] {
+  return getPaginatedPosts(1, Infinity).posts
 }

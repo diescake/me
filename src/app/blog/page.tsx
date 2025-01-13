@@ -1,14 +1,22 @@
 import Link from 'next/link'
 import type { FunctionComponent } from 'react'
-import { getAllPosts } from '@/lib/blog'
+import { getPaginatedPosts } from '@/lib/blog'
 
 export const revalidate = 3600 // 1時間ごとに再生成
 
-export default function BlogList(): ReturnType<FunctionComponent> {
-  const posts = getAllPosts()
+type PageProps = {
+  searchParams: Promise<{ page?: string }>
+}
+
+export default async function BlogList({
+  searchParams,
+}: PageProps): Promise<ReturnType<FunctionComponent>> {
+  const resolvedSearchParams = await searchParams
+  const currentPage = Number(resolvedSearchParams.page) || 1
+  const { posts, totalPages } = getPaginatedPosts(currentPage)
 
   return (
-    <div className="max-w-4xl mx-auto py-12 px-6">
+    <div className="max-w-4xl mx-auto py-12 px-6 space-y-12">
       <h1 className="text-4xl font-bold mb-12 text-gray-100 tracking-tight">
         Blog Posts
       </h1>
@@ -48,6 +56,39 @@ export default function BlogList(): ReturnType<FunctionComponent> {
             </Link>
           </article>
         ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center space-x-4">
+        {currentPage > 1 && (
+          <Link
+            href={`/blog?page=${currentPage - 1}`}
+            className="px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-lg hover:bg-blue-900/70 transition-colors"
+          >
+            Previous
+          </Link>
+        )}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <Link
+            key={page}
+            href={`/blog?page=${page}`}
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              currentPage === page
+                ? 'bg-blue-400 text-gray-900'
+                : 'text-blue-400 bg-blue-900/50 hover:bg-blue-900/70'
+            }`}
+          >
+            {page}
+          </Link>
+        ))}
+        {currentPage < totalPages && (
+          <Link
+            href={`/blog?page=${currentPage + 1}`}
+            className="px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-lg hover:bg-blue-900/70 transition-colors"
+          >
+            Next
+          </Link>
+        )}
       </div>
     </div>
   )
