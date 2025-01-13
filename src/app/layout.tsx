@@ -7,8 +7,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'My Blog',
-  description: 'A blog built with Next.js and Markdown',
+  title: 'Generated site by Cline',
+  description: 'A blog built with Next.js and Markdown by Cline',
 }
 
 export default function RootLayout({
