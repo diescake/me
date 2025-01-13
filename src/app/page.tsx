@@ -1,6 +1,36 @@
 import type { FunctionComponent } from 'react'
 import Image from 'next/image'
 import { ExternalLinkIcon } from '@/components/ExternalLinkIcon'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'diescake.com - Software Engineer',
+  description:
+    'Software Engineer passionate about web development and building great user experiences.',
+  openGraph: {
+    title: 'diescake.com - Software Engineer',
+    description:
+      'Software Engineer passionate about web development and building great user experiences.',
+    url: 'https://diescake.com',
+    siteName: 'diescake.com',
+    images: [
+      {
+        url: `https://diescake.com/api/og?title=diescake.com`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'diescake.com - Software Engineer',
+    description:
+      'Software Engineer passionate about web development and building great user experiences.',
+    creator: '@diescake',
+  },
+}
 
 export default function Home(): ReturnType<FunctionComponent> {
   return (

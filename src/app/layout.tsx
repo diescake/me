@@ -11,6 +11,27 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'diescake.com',
   description: 'A blog built with Next.js and Markdown by Cline power',
+  openGraph: {
+    title: 'diescake.com',
+    description: 'A blog built with Next.js and Markdown by Cline power',
+    url: 'https://diescake.com',
+    siteName: 'diescake.com',
+    images: [
+      {
+        url: `https://diescake.com/api/og?title=diescake.com`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'diescake.com',
+    description: 'A blog built with Next.js and Markdown by Cline power',
+    creator: '@diescake',
+  },
 }
 
 export default function RootLayout({

@@ -2,8 +2,38 @@ import Link from 'next/link'
 import type { FunctionComponent } from 'react'
 import { getPaginatedPosts } from '@/lib/blog'
 import Pagination from '@/components/Pagination'
+import { Metadata } from 'next'
 
 export const revalidate = 3600 // 1時間ごとに再生成
+
+export const metadata: Metadata = {
+  title: 'Blog - diescake.com',
+  description:
+    'Technical blog posts about web development, programming, and more.',
+  openGraph: {
+    title: 'Blog - diescake.com',
+    description:
+      'Technical blog posts about web development, programming, and more.',
+    url: 'https://diescake.com/blog',
+    siteName: 'diescake.com',
+    images: [
+      {
+        url: `https://diescake.com/api/og?title=Blog - diescake.com`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog - diescake.com',
+    description:
+      'Technical blog posts about web development, programming, and more.',
+    creator: '@diescake',
+  },
+}
 
 type PageProps = {
   searchParams: Promise<{ page?: string }>
