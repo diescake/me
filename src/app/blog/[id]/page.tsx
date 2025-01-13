@@ -52,15 +52,15 @@ export default async function BlogPost({
         Back to blog
       </Link>
       <article className="prose prose-lg max-w-none prose-invert">
-        <h1 className="text-4xl font-bold mb-4 text-gray-100 tracking-tight">
+        <h1 className="text-5xl font-bold mb-6 text-gray-100 tracking-tight leading-tight">
           {post.title}
         </h1>
-        <div className="inline-block px-3 py-1 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-full mb-8">
+        <div className="inline-block px-3 py-1 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-full mb-12">
           {post.date}
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: post.content }}
-          className="prose-headings:text-gray-100 prose-headings:font-semibold prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-xl prose-pre:border prose-pre:border-gray-700"
+          className="[&>h1]:hidden prose-h2:text-gray-100 prose-h2:font-semibold prose-h2:text-3xl prose-h3:text-gray-100 prose-h3:font-semibold prose-h3:text-2xl prose-h4:text-gray-100 prose-h4:font-semibold prose-h4:text-xl prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-xl prose-pre:border prose-pre:border-gray-700"
         />
       </article>
     </div>
