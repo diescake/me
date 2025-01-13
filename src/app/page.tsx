@@ -1,4 +1,5 @@
 import type { FunctionComponent } from 'react'
+import { ExternalLinkIcon } from '@/components/ExternalLinkIcon'
 
 export default function Home(): ReturnType<FunctionComponent> {
   return (
@@ -10,6 +11,19 @@ export default function Home(): ReturnType<FunctionComponent> {
             Software Engineer passionate about web development and building
             great user experiences. Currently working on various projects using
             React, Next.js, and TypeScript.
+          </p>
+          <p className="text-sm text-gray-400 mt-8 italic border-t border-gray-200 pt-4">
+            これは{' '}
+            <a
+              href="https://github.com/cline/cline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-600 inline-flex items-center"
+            >
+              Cline
+              <ExternalLinkIcon className="ml-0.5 w-3 h-3" />
+            </a>
+            で生成したポートフォリオ風のサイトです。
           </p>
         </section>
       </div>
