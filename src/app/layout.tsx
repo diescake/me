@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import type { FunctionComponent } from 'react'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import Image from 'next/image'
+import { ExternalLinkIcon } from '@/components/ExternalLinkIcon'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,8 +25,15 @@ export default function RootLayout({
           <nav className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
             <Link
               href="/"
-              className="text-xl font-bold text-gray-900 hover:text-blue-600"
+              className="text-xl font-bold text-gray-900 hover:text-blue-600 flex items-center gap-2"
             >
+              <Image
+                src="/diescake-icon.jpg"
+                alt="diescake icon"
+                width={32}
+                height={32}
+                className="rounded-full"
+              />
               diescake
             </Link>
             <div className="space-x-6">
@@ -32,17 +41,19 @@ export default function RootLayout({
                 href="https://x.com/diescake"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
               >
                 X.com
+                <ExternalLinkIcon />
               </Link>
               <Link
                 href="https://github.com/diescake"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 hover:text-blue-600 transition-colors inline-flex items-center"
               >
                 GitHub
+                <ExternalLinkIcon />
               </Link>
               <Link
                 href="/blog"

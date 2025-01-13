@@ -1,9 +1,9 @@
 import { getAllPostIds, getPostData } from '@/lib/blog'
+import { addExternalLinkIcons } from '@/lib/external-links'
 import type { FunctionComponent } from 'react'
 export const revalidate = 3600 // 1時間ごとに再生成
 import Link from 'next/link'
 import { Metadata } from 'next'
-
 type GenerateMetadataProps = {
   params: Promise<{ id: string }>
 }
@@ -59,8 +59,10 @@ export default async function BlogPost({
           {post.date}
         </div>
         <div
-          dangerouslySetInnerHTML={{ __html: post.content }}
-          className="[&>h1]:hidden prose-h2:text-gray-100 prose-h2:font-semibold prose-h2:text-3xl prose-h3:text-gray-100 prose-h3:font-semibold prose-h3:text-2xl prose-h4:text-gray-100 prose-h4:font-semibold prose-h4:text-xl prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-xl prose-pre:border prose-pre:border-gray-700"
+          dangerouslySetInnerHTML={{
+            __html: addExternalLinkIcons(post.content),
+          }}
+          className="[&>h1]:hidden prose-h2:text-gray-100 prose-h2:font-semibold prose-h2:text-3xl prose-h3:text-gray-100 prose-h3:font-semibold prose-h3:text-2xl prose-h4:text-gray-100 prose-h4:font-semibold prose-h4:text-xl prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-xl prose-pre:border prose-pre:border-gray-700 [&_.external-link-icon]:relative [&_.external-link-icon]:after:content-[''] [&_.external-link-icon]:after:absolute [&_.external-link-icon]:after:w-4 [&_.external-link-icon]:after:h-4 [&_.external-link-icon]:after:bg-[url('/globe.svg')] [&_.external-link-icon]:after:bg-contain [&_.external-link-icon]:after:bg-no-repeat [&_.external-link-icon]:after:ml-1 [&_.external-link-icon]:after:inline-block"
         />
       </article>
     </div>
