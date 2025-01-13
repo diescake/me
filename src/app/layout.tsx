@@ -25,7 +25,7 @@ export default function RootLayout({
               href="/blog"
               className="text-xl font-bold text-gray-900 hover:text-blue-600"
             >
-              My Blog
+              Cline Playground
             </Link>
           </nav>
         </header>
