@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getAllPosts } from '@/lib/blog'
 
+export const revalidate = 3600 // 1時間ごとに再生成
+
 export default function BlogList() {
   const posts = getAllPosts()
 

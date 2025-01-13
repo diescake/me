@@ -1,15 +1,18 @@
 import { getAllPostIds, getPostData } from '@/lib/blog'
+
+export const revalidate = 3600 // 1時間ごとに再生成
 import Link from 'next/link'
 import { Metadata } from 'next'
 
 type GenerateMetadataProps = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({
   params,
 }: GenerateMetadataProps): Promise<Metadata> {
-  const post = await getPostData(params.id)
+  const resolvedParams = await params
+  const post = await getPostData(resolvedParams.id)
   return {
     title: post.title,
     description: post.description,
@@ -17,11 +20,12 @@ export async function generateMetadata({
 }
 
 type PageProps = {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const post = await getPostData(params.id)
+  const resolvedParams = await params
+  const post = await getPostData(resolvedParams.id)
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
