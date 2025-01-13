@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { FunctionComponent } from 'react'
 import { getPaginatedPosts } from '@/lib/blog'
+import Pagination from '@/components/Pagination'
 
 export const revalidate = 3600 // 1時間ごとに再生成
 
@@ -58,38 +59,7 @@ export default async function BlogList({
         ))}
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center space-x-4">
-        {currentPage > 1 && (
-          <Link
-            href={`/blog?page=${currentPage - 1}`}
-            className="px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-lg hover:bg-blue-900/70 transition-colors"
-          >
-            Previous
-          </Link>
-        )}
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <Link
-            key={page}
-            href={`/blog?page=${page}`}
-            className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-              currentPage === page
-                ? 'bg-blue-400 text-gray-900'
-                : 'text-blue-400 bg-blue-900/50 hover:bg-blue-900/70'
-            }`}
-          >
-            {page}
-          </Link>
-        ))}
-        {currentPage < totalPages && (
-          <Link
-            href={`/blog?page=${currentPage + 1}`}
-            className="px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/50 rounded-lg hover:bg-blue-900/70 transition-colors"
-          >
-            Next
-          </Link>
-        )}
-      </div>
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </div>
   )
 }
