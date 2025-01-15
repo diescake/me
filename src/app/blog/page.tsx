@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { FunctionComponent } from 'react'
 import { getPaginatedPosts } from '@/lib/blog'
 import Pagination from '@/components/Pagination'
+import SearchBar from '@/components/SearchBar'
 import { Metadata } from 'next'
 
 export const revalidate = 3600 // 1時間ごとに再生成
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 }
 
 type PageProps = {
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ page?: string; q?: string }>
 }
 
 export default async function BlogList({
@@ -44,13 +45,15 @@ export default async function BlogList({
 }: PageProps): Promise<ReturnType<FunctionComponent>> {
   const resolvedSearchParams = await searchParams
   const currentPage = Number(resolvedSearchParams.page) || 1
-  const { posts, totalPages } = getPaginatedPosts(currentPage)
+  const searchQuery = resolvedSearchParams.q
+  const { posts, totalPages } = getPaginatedPosts(currentPage, 10, searchQuery)
 
   return (
     <div className="max-w-4xl mx-auto py-12 px-6 space-y-12">
-      <h1 className="text-4xl font-bold mb-12 text-gray-100 tracking-tight">
+      <h1 className="text-4xl font-bold mb-8 text-gray-100 tracking-tight">
         Blog Posts
       </h1>
+      <SearchBar />
       <div className="space-y-6">
         {posts.map((post) => (
           <article

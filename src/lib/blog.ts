@@ -61,7 +61,8 @@ export function getAllPostIds(): string[] {
 
 export function getPaginatedPosts(
   page: number = 1,
-  perPage: number = 5
+  perPage: number = 10,
+  searchQuery?: string
 ): {
   posts: BlogPostMetadata[]
   totalPages: number
@@ -81,8 +82,19 @@ export function getPaginatedPosts(
     }
   })
 
+  // Filter posts by search query if provided
+  let filteredPosts = allPostsData
+  if (searchQuery) {
+    const query = searchQuery.toLowerCase()
+    filteredPosts = allPostsData.filter(
+      (post) =>
+        post.title.toLowerCase().includes(query) ||
+        post.description.toLowerCase().includes(query)
+    )
+  }
+
   // Sort posts by date
-  const sortedPosts = allPostsData.sort((a, b) => {
+  const sortedPosts = filteredPosts.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
