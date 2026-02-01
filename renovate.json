@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>kufu/renovate-config"
-  ]
+  "extends": ["github>kufu/renovate-config"],
+  "automerge": true,
+  "platformAutomerge": true
 }
