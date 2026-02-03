@@ -24,8 +24,8 @@
   "dependencies": {
     "gray-matter": "^4.0.3",
     "next": "15.1.11",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.0.4",
+    "react-dom": "^19.0.4",
     "rehype-highlight": "^7.0.2",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
