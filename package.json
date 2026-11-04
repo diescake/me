@@ -48,7 +48,7 @@
     "eslint-config-next": "^15.1.4",
     "eslint-config-prettier": "^9.1.2",
     "husky": "^9.1.7",
-    "lint-staged": "^15.3.0",
+    "lint-staged": "^15.5.2",
     "postcss": "^8.0.9",
     "prettier": "^3.4.2",
     "rehype-raw": "^7.0.0",
